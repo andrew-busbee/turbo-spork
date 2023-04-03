@@ -15,7 +15,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - UMASK_SET=002
-      - serverIP=${IP} #0.0.0.0
+      - serverIP=0.0.0.0
       - serverPort=8266
       - webUIPort=8265
       - internalNode=true
@@ -40,7 +40,7 @@ services:
       - PGID=${PGID}
       - UMASK_SET=002
       - nodeName=MainNode
-      - serverIP=${IP} #0.0.0.0
+      - serverIP=0.0.0.0
       - serverPort=8266
     volumes:
       - ${ConfigsPath}:/app/configs
