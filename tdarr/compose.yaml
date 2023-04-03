@@ -11,21 +11,21 @@ services:
       - 8267:8267 # Internal node port
       - 8268:8268 # Example extra node port
     environment:
-      - TZ=Europe/London
+      - TZ=America/Chicago
       - PUID=${PUID}
       - PGID=${PGID}
       - UMASK_SET=002
-      - serverIP=0.0.0.0
+      - serverIP=${IP} #0.0.0.0
       - serverPort=8266
       - webUIPort=8265
       - internalNode=true
       - nodeName=MyInternalNode
     volumes:
-      - /docker/tdarr/server:/app/server
-      - /docker/tdarr/configs:/app/configs
-      - /docker/tdarr/logs:/app/logs
-      - /media:/media
-      - /transcode_cache:/temp
+      - ${ServerPath}:/app/server
+      - ${ConfigsPath}:/app/configs
+      - ${LogsPath}:/app/logs
+      - /mnt/remote/media:/media
+      - /mnt/local/transcode_cache:/temp
 
 
 # node example
@@ -35,15 +35,15 @@ services:
     restart: unless-stopped
     network_mode: service:tdarr
     environment:
-      - TZ=Europe/London
+      - TZ=America/Chicago
       - PUID=${PUID}
       - PGID=${PGID}
       - UMASK_SET=002
       - nodeName=MainNode
-      - serverIP=0.0.0.0
+      - serverIP=${IP} #0.0.0.0
       - serverPort=8266
     volumes:
-      - /docker/tdarr/configs:/app/configs
-      - /docker/tdarr/logs:/app/logs
-      - /media:/media
-      - /transcode_cache:/temp
+      - ${ConfigsPath}:/app/configs
+      - ${LogsPath}:/app/logs
+      - /mnt/remote/media:/media
+      - /mnt/local/transcode_cache:/temp
