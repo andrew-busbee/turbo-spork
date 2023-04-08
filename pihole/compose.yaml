@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+    ports:
+      - "${IP}:54:53/tcp"
+      - "${IP}:54:53/udp"
+      - "${IP}:8080:80/tcp"
+      #- "${IP}:8443:443/tcp"
+    environment:
+      TZ: 'America/Chicago'
+      WEBPASSWORD: '${PASSWORD}'
+    # Volumes store your data between container upgrades
+    volumes:
+      - '${PATH}/etc-pihole:/etc/pihole'
+      - '${PATH}/etc-dnsmasq.d:/etc/dnsmasq.d'    
+    #dns:
+      #https://docs.pi-hole.net/guides/dns/upstream-dns-providers/
+      #- 193.138.218.74 #This is the mullvad vpn dns
+      #DNS Selected from list above.  This is the cloudflare malware blocking DNS
+      #- 1.1.1.2
+      #- 1.0.0.2
+    cap_add:
+      - NET_ADMIN # Recommended but not required (DHCP needs NET_ADMIN)      
+    restart: always
