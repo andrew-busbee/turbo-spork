@@ -15,8 +15,8 @@ services:
       WEBPASSWORD: '${PASSWORD}'
     # Volumes store your data between container upgrades
     volumes:
-      - '${PATH}/etc-pihole:/etc/pihole'
-      - '${PATH}/etc-dnsmasq.d:/etc/dnsmasq.d'    
+      - '${ETCPATH}:/etc/pihole'
+      - '${ETCDNSMASQPATH}:/etc/dnsmasq.d'    
     #dns:
       #https://docs.pi-hole.net/guides/dns/upstream-dns-providers/
       #- 193.138.218.74 #This is the mullvad vpn dns
