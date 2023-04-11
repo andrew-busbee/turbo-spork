@@ -10,5 +10,5 @@ services:
     ports:
       - ${PORT}:8181
     volumes:
-      - ${PATH}:/config
+      - ${CONFIGPATH}:/config
     restart: always
