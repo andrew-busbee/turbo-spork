@@ -5,7 +5,8 @@ services:
     container_name: homepage-homelab
     restart: always
     ports:
-      - ${HOMEPAGEPORT}:3000
+      #- ${HOMEPAGEPORT}:3000
+      - 8001:3000
     volumes:
       -	/var/lib/docker/volumes/homepage-homelab/_data:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro # (optional) For docker integrations
