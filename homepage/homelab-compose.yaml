@@ -7,11 +7,9 @@ services:
     ports:
       - ${HOMEPAGEPORT}:3000
     volumes:
-      #-	homepage-homelab:/app/config
       - homepage-homelab:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro # (optional) For docker integrations
 
 volumes:
   homepage-homelab:
-    #external: true
-    name: homepage-homelab
+    name: homepage-homelab  #Name of existing volume
