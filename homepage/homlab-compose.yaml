@@ -2,13 +2,13 @@ version: "3.3"
 services:
   homepage:
     image: ghcr.io/benphelps/homepage:latest
-    container_name: homepage-${SUBNAME}
+    container_name: homepage-homelab
     restart: always
     ports:
       - ${HOMEPAGEPORT}:3000
     volumes:
-      - homepage-${SUBNAME}:/app/config # Make sure your local config directory exists
+      - homepage-homelab:/app/config # Make sure your local config directory exists
       - /var/run/docker.sock:/var/run/docker.sock:ro # (optional) For docker integrations
       
 volumes:
-  homepage-${SUBNAME}:
+  homepage-homelab:
