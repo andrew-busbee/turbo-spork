@@ -11,5 +11,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro # (optional) For docker integrations
 
 volumes:
-  homepage-homelab:
+  homepage-christmas:
     name: homepage-christmas  #Name of existing volume
